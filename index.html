@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siraj's Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#0b0f1a;color:white}
+
+/* NAV */
+nav{
+display:flex;justify-content:space-between;
+align-items:center;padding:15px 20px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+position:sticky;top:0
+}
+
+.nav-links{
+display:flex;
+}
+
+.nav-links a{
+margin-left:20px;
+color:#aaa;
+text-decoration:none;
+}
+
+.nav-links a:hover{color:#fff}
+
+.menu{
+display:none;
+font-size:24px;
+cursor:pointer;
+}
+
+/* HERO */
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px
+}
+
+.hero img{
+width:120px;
+border-radius:50%;
+border:3px solid #38bdf8;
+animation:float 3s infinite
+}
+
+.hero h1{
+font-size:26px;
+margin:10px 0
+}
+
+.hero span{
+background:linear-gradient(90deg,#38bdf8,#a78bfa);
+-webkit-background-clip:text;
+color:transparent
+}
+
+.typing{
+color:#aaa;
+font-size:14px;
+}
+
+.btn{
+margin-top:15px;
+padding:8px 18px;
+border-radius:20px;
+background:linear-gradient(90deg,#38bdf8,#a78bfa);
+color:white;
+text-decoration:none;
+}
+
+/* FLOAT */
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+}
+
+/* SECTION */
+section{
+padding:40px 15px;
+text-align:center
+}
+
+/* CARDS */
+.cards{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.card{
+width:100%;
+max-width:320px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+border-radius:12px;
+padding:18px;
+margin:10px 0;
+opacity:0;
+transform:translateY(30px);
+transition:0.6s;
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:20px;
+color:#aaa
+}
+
+/* DESKTOP */
+@media(min-width:768px){
+
+.hero h1{font-size:40px}
+.hero img{width:150px}
+
+.cards{
+flex-direction:row;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.card{
+margin:15px;
+width:280px;
+}
+
+.menu{
+display:none;
+}
+
+.nav-links{
+display:flex;
+}
+
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.nav-links{
+display:none;
+flex-direction:column;
+position:absolute;
+top:60px;
+left:0;
+width:100%;
+background:#111;
+}
+
+.nav-links.active{
+display:flex;
+}
+
+.menu{
+display:block;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<h2>Mohammed Siraj Baig</h2>
+
+<div class="menu" onclick="toggleMenu()">☰</div>
+
+<div class="nav-links" id="navLinks">
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+
+</nav>
+
+<section class="hero">
+<img src="profile.jpeg">
+<h1>Hi, I'm <span>Mohammed Siraj Baig</span></h1>
+<p class="typing" id="typing"></p>
+<a href="#projects" class="btn">View Work</a>
+</section>
+
+<section id="about">
+<h2>About Me</h2>
+<div class="cards">
+<div class="card">
+<p>I am a Computer Science student at BMS College of Engineering (BMSCE) with a strong academic background, having scored 98% in my 12th board examinations and 92.2% in CBSE 10th.
+
+I am passionate about software development and currently building my skills in C programming, HTML, CSS, and JavaScript. I enjoy solving problems and creating practical projects that strengthen my understanding of technology.
+
+My goal is to become a skilled full stack developer and contribute to impactful real-world applications.</p>
+</div>
+</div>
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+<div class="cards">
+
+
+<div class="card">
+<h3>To-Do App</h3>
+<p>Task manager</p>
+<a href="https://to-do-app-theta-black.vercel.app/">Live Demo</a>
+</div>
+
+<div class="card">
+<h3>Weather App</h3>
+<p>API based</p>
+<a href="https://weather-app-delta-eight-87.vercel.app/">Live Demo</a>
+</div>
+
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<div class="cards">
+<div class="card">
+<p><a href="mailto:mohammedsirajbaig904@gmail.com">mohammedsirajbaig904@gmail.com</a></p>
+<p><a href="https://github.com/mohammedsirajbaig904-lab">mohammedsirajbaig904-lab</a></p>
+</div>
+</div>
+</section>
+
+<footer>
+© 2026 Mohammed Siraj Baig
+</footer>
+
+<script>
+// mobile menu
+function toggleMenu(){
+document.getElementById("navLinks").classList.toggle("active");
+}
+
+// typing effect
+const text = "Aspiring Software Developer 🚀";
+let i = 0;
+function typing(){
+if(i < text.length){
+document.getElementById("typing").innerHTML += text.charAt(i);
+i++;
+setTimeout(typing, 50);
+}
+}
+typing();
+
+// scroll animation
+const cards = document.querySelectorAll('.card');
+window.addEventListener('scroll', ()=>{
+cards.forEach(card=>{
+let pos = card.getBoundingClientRect().top;
+if(pos < window.innerHeight - 50){
+card.classList.add('show');
+}
+});
+});
+</script>
+
+</body>
+</html>
